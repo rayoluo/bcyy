@@ -59,7 +59,8 @@ if response.status_code == 200:
             print("获取班车预约日期区间成功！")
             selldatemin = json.loads(response.text).get("data").get("selldatemin")
             selldatemax = json.loads(response.text).get("data").get("selldatemax")
-            print("可预约时间区间为:", selldatemin, '~', selldatemax)   
+            print("可预约时间区间为:")
+            print(selldatemin, "---", selldatemax)
 
             # 判断selldatamax是不是周末，是的话就不预约
             # strptime是将一个字符串转化成一个时间对象
@@ -94,12 +95,14 @@ if response.status_code == 200:
                         code = json.loads(response.text).get("code")
                         msg = json.loads(response.text).get("msg")
                         if code == 200 and msg == "success":
-                            print(selldatemax+"晚上八点半的班车预约成功！")
-
+                            print("晚上八点半的班车预约成功！日期：")
+                            print(selldatemax)
                             # to do 添加邮箱通知模块
 
                         else:
-                            print("班车预约失败!", "code:", code, "error message:", msg)
+                            # print("班车预约失败!", "code:", code, "error message:", msg)
+                            print("班车预约失败！错误信息：")
+                            print(msg)
                             exit(-1)
                 else:
                     print("获取可预约班车最大日期的班车信息失败!")
