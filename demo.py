@@ -105,7 +105,6 @@ if response.status_code == 200:
         else:
             print("获取班车预约日期区间失败！")
             exit(-1)
-
         # 程序的逻辑是始终帮你预约可预约班车最大日期的8:30的班车，需要注意如果是周六就预约5:30的
 else:
     print('dataForward接口访问失败！')
