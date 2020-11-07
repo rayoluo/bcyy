@@ -5,8 +5,8 @@ import datetime
 import time
 
 # 手动填写账号和密码
-idserial = "5614"
-password = 111111
+idserial = "your id"
+password = "your password"
 
 print("===============log info===============")
 print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
@@ -59,7 +59,7 @@ if response.status_code == 200:
             print("获取班车预约日期区间成功！")
             selldatemin = json.loads(response.text).get("data").get("selldatemin")
             selldatemax = json.loads(response.text).get("data").get("selldatemax")
-            print("可预约时间区间为:"+selldatemin+'~'+selldatemax)
+            print("可预约时间区间为:", selldatemin, '~', selldatemax)   
 
             # 判断selldatamax是不是周末，是的话就不预约
             # strptime是将一个字符串转化成一个时间对象
@@ -99,9 +99,8 @@ if response.status_code == 200:
                             # to do 添加邮箱通知模块
 
                         else:
-                            print("班车预约失败!", "code:", code, "error message:", msg, sep=' ')
+                            print("班车预约失败!", "code:", code, "error message:", msg)
                             exit(-1)
-
                 else:
                     print("获取可预约班车最大日期的班车信息失败!")
                     exit(-1)
