@@ -1,12 +1,14 @@
 import requests
 import json
 import datetime
+import time
 
 # 手动填写账号和密码
 idserial = "5614"
 password = 111111
 
 print("===============log info===============")
+print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 session = requests.session()
 url_welcome = 'http://bcyy.iie.ac.cn/'
 r = session.get(url=url_welcome)
