@@ -3,9 +3,10 @@ import json
 import datetime
 
 # 手动填写账号和密码
-idserial = "your id"
-password = "your password"
+idserial = "5614"
+password = 111111
 
+print("===============log info===============")
 session = requests.session()
 url_welcome = 'http://bcyy.iie.ac.cn/'
 r = session.get(url=url_welcome)
@@ -80,7 +81,7 @@ if response.status_code == 200:
                 response = session.post(url=url, headers=headers, data=json.dumps(data))
                 if response.status_code == 200:
                     print("获取可预约班车最大日期的班车信息成功!")
-                    print(response.text)
+                    # print(response.text)
                     # 获取从益园到张仪村晚上20:30的班车信息
                     info = json.loads(response.text).get("data")[11]
                     # 构建班车预约请求负载，只多了一个method:/mobile/pay/toPaySelf键值对
@@ -105,6 +106,7 @@ if response.status_code == 200:
         else:
             print("获取班车预约日期区间失败！")
             exit(-1)
+
         # 程序的逻辑是始终帮你预约可预约班车最大日期的8:30的班车，需要注意如果是周六就预约5:30的
 else:
     print('dataForward接口访问失败！')
