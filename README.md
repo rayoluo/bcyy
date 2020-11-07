@@ -28,12 +28,12 @@ crontab -e
 ### add cron task
 
 ```shell
- 59 23 * * * PYTHONIOENCODING=utf-8 python /yourpath/demo.py >> /yourpath/bcyy/bcyy.log 2>&1
+ 1 0 * * * PYTHONIOENCODING=utf-8 python /yourpath/demo.py >> /yourpath/bcyy/bcyy.log 2>&1
 ```
 
-![image-20201107211707771](https://gitee.com/oluoluo/typoraImage/raw/master/img/image-20201107211707771.png)
+![image-20201107232527292](https://gitee.com/oluoluo/typoraImage/raw/master/img/image-20201107232527292.png)
 
-This command means executing this python program every day at 23:59 and append the output to the log file `bcyy.log`.
+This command means executing this python program every day at 00:01 and append the output to the log file `bcyy.log`.
 
 Don't lose **PYTHONIOENCODING=utf-8** ! Or some conflicts with `crontab` may happen!
 
