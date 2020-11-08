@@ -43,6 +43,6 @@ Don't lose **PYTHONIOENCODING=utf-8** ! Or some conflicts with `crontab` may hap
 
 ### update: add mail sending function
 
-Fill in relevant information in `send_mail.py`. **Attention**：`mail_pass` is not your qq password, and you need to set stmp in you qq mail. Here is a teaching [page](http://www.jspxcms.com/documentation/351.html).
+Fill in relevant information in `send_mail.py`. **Attention**：`mail_pass` is not your qq password, and you need to set smtp in you qq mail. Here is a teaching [page](http://www.jspxcms.com/documentation/351.html).
 
 ![image-20201108163919443](https://gitee.com/oluoluo/typoraImage/raw/master/img/image-20201108163919443.png)
