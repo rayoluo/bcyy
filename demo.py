@@ -30,8 +30,8 @@ reservation_id = 11
 #  15   益园-张仪村   21:45
 #  16   益园-叠翠     22:00
 
-details = ["总部基地-益园", "总部基地-益园", "张仪村-益园", "叠翠-益园", "玉泉路-益园", "益园-总部基地", "益园-玉泉路", "益园-张仪村", "益园-叠翠",
-"益园-总部基地", "益园-玉泉路", "益园-张仪村", "益园-叠翠", "益园-总部基地", "益园-玉泉路", "益园-张仪村", "益园-叠翠"]
+details = [u"总部基地-益园", u"总部基地-益园", u"张仪村-益园", u"叠翠-益园", u"玉泉路-益园", u"益园-总部基地", u"益园-玉泉路", u"益园-张仪村", u"益园-叠翠",
+u"益园-总部基地", u"益园-玉泉路", u"益园-张仪村", u"益园-叠翠", u"益园-总部基地", u"益园-玉泉路", u"益园-张仪村", u"益园-叠翠"]
 times = ["7:30", "8:00", "8:00", "8:00", "8:00", "17:15", "17:30", "17:30", "17:45", "20:15", "20:30", "20:30", "20:45", "21:30", "21:45", "21:45", "22:00"]
 
 
@@ -128,12 +128,12 @@ if response.status_code == 200:
                             print(details[reservation_id])
                             print(times[reservation_id])
                             # send_message = u"%s的%s班车预约成功！\n日期：" % (times[reservation_id], details[reservation_id]) + selldatemax
-                            send_message = "Reservation Success "
-                            send_message += details[reservation_id]
-                            send_message += " "
+                            send_message = "Reservation Success. More details: "
                             send_message += selldatemax
-                            send_message += " "
+                            send_message += " time: "
                             send_message += times[reservation_id]
+                            send_message += " details: "
+                            send_message += details[reservation_id]
                             send_email.send_mail(send_message)
 
                         else:
@@ -141,7 +141,7 @@ if response.status_code == 200:
                             print("班车预约失败！错误信息：")
                             print(msg)
                             # send_message = u"班车预约失败！\n预约日期:" + selldatemax +  u"\n错误信息: %s" % msg
-                            send_message = "Reservation Fail. More detail: "
+                            send_message = "Reservation Fail. More details: "
                             send_message += selldatemax
                             send_message += " error infomation: "
                             send_message += msg
