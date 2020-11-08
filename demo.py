@@ -9,6 +9,28 @@ import send_email
 idserial = "your id"
 password = "your password"
 
+reservation_id = 11
+# 可以选择的班车车次
+# id	detail        time
+#  0    总部基地-益园 7:30
+#  1    总部基地-益园 8:00
+#  2    张仪村-益园   8:00
+#  3    叠翠-益园     8:00
+#  4    玉泉路-益园   8:00
+#  5    益园-总部基地 17:15
+#  6    益园-玉泉路   17:30
+#  7    益园-张仪村   17:30
+#  8    益园-叠翠     17:45
+#  9    益园-总部基地 20:15
+#  10   益园-玉泉路   20:30
+#  11   益园-张仪村   20:30
+#  12   益园-叠翠     20:45
+#  13   益园-总部基地 21:30
+#  14   益园-玉泉路   21:45
+#  15   益园-张仪村   21:45
+#  16   益园-叠翠     22:00
+
+
 print("===============log info===============")
 print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 session = requests.session()
@@ -89,7 +111,7 @@ if response.status_code == 200:
                     print("获取可预约班车最大日期的班车信息成功!")
                     # print(response.text)
                     # 获取从益园到张仪村晚上20:30的班车信息
-                    info = json.loads(response.text).get("data")[11]
+                    info = json.loads(response.text).get("data")[reservation_id]
                     # 构建班车预约请求负载，只多了一个method:/mobile/pay/toPaySelf键值对
                     info["method"] = "/mobile/pay/toPaySelf"
                     response = session.post(url=url, headers=headers, data=json.dumps(info))
