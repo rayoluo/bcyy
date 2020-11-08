@@ -3,6 +3,7 @@ import requests
 import json
 import datetime
 import time
+import send_email
 
 # 手动填写账号和密码
 idserial = "your id"
@@ -73,6 +74,7 @@ if response.status_code == 200:
 
             if week == 0 or week == 6:
                 print("别卷了卷王！要加班自己手动预约吧！！！")
+                send_email.send_mail("别卷了卷王！要加班自己手动预约吧！！！")
                 exit(-1)
             else: # 开始班车预约
                 # 正式代码
@@ -97,12 +99,15 @@ if response.status_code == 200:
                         if code == 200 and msg == "success":
                             print("晚上八点半的班车预约成功！日期：")
                             print(selldatemax)
-                            # to do 添加邮箱通知模块
+                            send_message = u"晚上八点半的班车预约成功！\n日期：" + selldatemax
+                            send_email.send_mail(send_message)
 
                         else:
                             # print("班车预约失败!", "code:", code, "error message:", msg)
                             print("班车预约失败！错误信息：")
                             print(msg)
+                            send_message = u"班车预约失败！\n预约日期:" + selldatemax +  u"\n错误信息: %s" % msg
+                            send_email.send_mail(send_message)
                             exit(-1)
                 else:
                     print("获取可预约班车最大日期的班车信息失败!")
