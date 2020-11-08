@@ -65,7 +65,7 @@ def book_now(token, selldate):
             # print(response.text)
             # 获取从益园到张仪村晚上20:30的班车信息
         infos = json.loads(response.text).get("data")
-        info = list(filter(lambda i: i['goodsdetail']=='益园-张仪村' and i['selldate']==selldate and i['starttime']=='20:30', infos))[0]
+        info = list(filter(lambda i: i['goodsdetail']==u'益园-张仪村' and i['selldate']==selldate and i['starttime']==u'20:30', infos))[0]
         # 构建班车预约请求负载，只多了一个method:/mobile/pay/toPaySelf键值对
         info["method"] = "/mobile/pay/toPaySelf"
         response = session.post(url=url, headers=headers, data=json.dumps(info))
